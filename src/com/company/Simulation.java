@@ -44,7 +44,8 @@ public class Simulation {
         System.out.println("Total number of steps is: " + step);
 
         // At the end of the simulation, go through the company's vehicles and retrieve the counts for the amount of
-        // steps where the vehicle was travelling to a passenger, travelling to a destination, (and when it was idle)
+        // steps where the vehicle was (1) travelling to a passenger, (2) travelling to a destination, (and (3) when it
+        // was idle)
         List<Vehicle> vehicles = company.getVehicles();
         for (Vehicle v : vehicles) {
             String vehicleDetails = v.toString();
