@@ -42,6 +42,17 @@ public class Taxi extends Vehicle implements DrawableItem {
             // Find where to move to next.
             Location next = getLocation().nextLocation(target);
             setLocation(next);
+
+            // The problem with shuttles is that this logic will not work for it. A shuttle can have a passenger but
+            // not be travelling to a drop off location, it could be travelling to another passenger
+            // The shuttle has a list of destinations, but it makes no distinction as to whether it is a drop off
+            // location or a pick up location
+            if (passenger == null) {
+                incrementTravelToPassengerCount();
+            } else {
+                incrementTravelToDestinationCount();
+            }
+
             if (next.equals(target)) {
                 if (passenger != null) {
                     notifyPassengerArrival(passenger);
@@ -111,6 +122,6 @@ public class Taxi extends Vehicle implements DrawableItem {
      * @return A string representation of the taxi.
      */
     public String toString() {
-        return "Taxi at " + getLocation();
+        return "Taxi ID: " + super.toString() + " is located at " + getLocation();
     }
 }

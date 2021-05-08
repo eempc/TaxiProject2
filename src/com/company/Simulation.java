@@ -13,6 +13,7 @@ import java.util.List;
 public class Simulation {
     private List<Actor> actors;
     private int step;
+    private TaxiCompany company;
 
     /**
      * Create the initial set of actors for the simulation.
@@ -21,7 +22,7 @@ public class Simulation {
         actors = new LinkedList<>();
         step = 0;
         City city = new City();
-        TaxiCompany company = new TaxiCompany(city);
+        company = new TaxiCompany(city);
         PassengerSource source = new PassengerSource(city, company);
 
         actors.addAll(company.getVehicles());
@@ -37,7 +38,21 @@ public class Simulation {
         for (int i = 0; i < 500; i++) {
             step++;
             step();
-            wait(100);
+            wait(1);
+        }
+
+        System.out.println("Total number of steps is: " + step);
+
+        List<Vehicle> vehicles = company.getVehicles();
+        for (Vehicle v : vehicles) {
+            String vehicleDetails = v.toString();
+            int travelToP = v.getTravelToPassengerCount();
+            int travelToD = v.getTravelToDestinationCount();
+            double timeSpentToP = (double) travelToP / step * 100;
+            double timeSpentToD = (double) travelToD / step * 100;
+            String meow = String.format("Taxi ID: %s, to passenger count: %s (%.1f%%), to destination count: %s (%.1f%%)",
+                    vehicleDetails, travelToP, timeSpentToP, travelToD, timeSpentToD);
+            System.out.println(meow);
         }
     }
 

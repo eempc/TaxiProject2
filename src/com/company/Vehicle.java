@@ -14,6 +14,8 @@ public abstract class Vehicle implements Actor {
     private Location targetLocation;
     // Record how often the vehicle has nothing to do.
     private int idleCount;
+    private int travelToPassengerCount;
+    private int travelToDestinationCount;
 
     /**
      * Constructor of class Vehicle
@@ -33,6 +35,8 @@ public abstract class Vehicle implements Actor {
         this.location = location;
         targetLocation = null;
         idleCount = 0;
+        travelToDestinationCount = 0;
+        travelToPassengerCount = 0;
     }
 
     /**
@@ -144,5 +148,21 @@ public abstract class Vehicle implements Actor {
      */
     public void incrementIdleCount() {
         idleCount++;
+    }
+
+    public int getTravelToPassengerCount() {
+        return travelToPassengerCount;
+    }
+
+    public void incrementTravelToPassengerCount() {
+        travelToPassengerCount++;
+    }
+
+    public int getTravelToDestinationCount() {
+        return travelToDestinationCount;
+    }
+
+    public void incrementTravelToDestinationCount() {
+        travelToDestinationCount++;
     }
 }
