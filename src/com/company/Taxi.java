@@ -30,6 +30,8 @@ public class Taxi extends Vehicle implements DrawableItem {
 
         passengerImage = new ImageIcon(getClass().getResource(
                 "images/taxi+person.jpg")).getImage();
+
+        assert company != null;
     }
 
     /**
@@ -43,10 +45,7 @@ public class Taxi extends Vehicle implements DrawableItem {
             Location next = getLocation().nextLocation(target);
             setLocation(next);
 
-            // The problem with shuttles is that this logic will not work for it. A shuttle can have a passenger but
-            // not be travelling to a drop off location, it could be travelling to another passenger
-            // The shuttle has a list of destinations, but it makes no distinction as to whether it is a drop off
-            // location or a pick up location
+            // Keep track of the count of whether the taxi is going to a passenger or dropping them off
             if (passenger == null) {
                 incrementTravelToPassengerCount();
             } else {
