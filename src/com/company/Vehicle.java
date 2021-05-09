@@ -96,7 +96,7 @@ public abstract class Vehicle implements Actor {
         if (location != null) {
             this.location = location;
         } else {
-            throw new NullPointerException();
+            throw new TargetLocationAlreadySetException("Target location already set");
         }
     }
 
