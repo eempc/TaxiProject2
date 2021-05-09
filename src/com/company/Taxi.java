@@ -71,6 +71,9 @@ public class Taxi extends Vehicle implements DrawableItem {
      * @param location The pickup location.
      */
     public void setPickupLocation(Location location) {
+        if (getTargetLocation() != null) {
+            throw new TargetLocationAlreadySetException("Target already set");
+        }
         setTargetLocation(location);
     }
 
