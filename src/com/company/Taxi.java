@@ -30,6 +30,8 @@ public class Taxi extends Vehicle implements DrawableItem {
 
         passengerImage = new ImageIcon(getClass().getResource(
                 "images/taxi+person.jpg")).getImage();
+
+        assert company != null;
     }
 
     /**
@@ -42,6 +44,14 @@ public class Taxi extends Vehicle implements DrawableItem {
             // Find where to move to next.
             Location next = getLocation().nextLocation(target);
             setLocation(next);
+
+            // Keep track of the count of whether the taxi is going to a passenger or dropping them off
+            if (passenger == null) {
+                incrementTravelToPassengerCount();
+            } else {
+                incrementTravelToDestinationCount();
+            }
+
             if (next.equals(target)) {
                 if (passenger != null) {
                     notifyPassengerArrival(passenger);
@@ -111,6 +121,6 @@ public class Taxi extends Vehicle implements DrawableItem {
      * @return A string representation of the taxi.
      */
     public String toString() {
-        return "Taxi at " + getLocation();
+        return "Taxi ID: " + super.toString() + " is located at " + getLocation();
     }
 }
