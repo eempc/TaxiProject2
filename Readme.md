@@ -12,3 +12,5 @@ Report on the statistical information that is being gathered by taxis and the pa
 
 ### Exercise 16.28 
 Adapt the vehicle classes so that records are kept of the amount of time spent traveling to pickup locations and passenger destinations. Can you see a possible conflict here for shuttles?
+
+# Test
