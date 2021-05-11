@@ -14,6 +14,7 @@ public class Simulation {
     private List<Actor> actors;
     private int step;
     private TaxiCompany company;
+    private PassengerSource passenger;
 
     /**
      * Create the initial set of actors for the simulation.
@@ -38,7 +39,7 @@ public class Simulation {
         for (int i = 0; i < 500; i++) {
             step++;
             step();
-            wait(1);
+            wait(10);
         }
 
         System.out.println("Total number of steps is: " + step);
@@ -55,6 +56,12 @@ public class Simulation {
             double timeSpentToD = (double) travelToD / step * 100;
             String meow = String.format("Taxi ID: %s, to passenger count: %s (%.1f%%), to destination count: %s (%.1f%%)",
                     vehicleDetails, travelToP, timeSpentToP, travelToD, timeSpentToD);
+            System.out.println("total number of taxis:");
+            System.out.println(TaxiCompany.getNumberOfTaxis());
+            System.out.println("total missed pickups:");
+            System.out.println(PassengerSource.getMissedPickups());
+            System.out.println("total steps idle count:");
+            System.out.println(v.getIdleCount());
             System.out.println(meow);
         }
     }

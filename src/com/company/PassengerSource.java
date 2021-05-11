@@ -18,7 +18,7 @@ public class PassengerSource implements Actor {
     private TaxiCompany company;
     private Random rand;
     private static final double CREATION_PROBABILITY = 0.06;
-    private int missedPickups;
+    private static int missedPickups = 0;
 
     /**
      * Constructor for objects of class PassengerSource.
@@ -39,7 +39,6 @@ public class PassengerSource implements Actor {
         // Use a fixed random seed for repeatable effects.
         // Change this to produce more random effects.
         rand = new Random(12345);
-        missedPickups = 0;
     }
 
     /**
@@ -61,7 +60,7 @@ public class PassengerSource implements Actor {
      * @return The number of passengers for whom a pickup
      * could not be found.
      */
-    public int getMissedPickups() {
+    public static int getMissedPickups() {
         return missedPickups;
     }
 

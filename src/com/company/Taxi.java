@@ -126,4 +126,6 @@ public class Taxi extends Vehicle implements DrawableItem {
     public String toString() {
         return "Taxi ID: " + super.toString() + " is located at " + getLocation();
     }
+
+
 }

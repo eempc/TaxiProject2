@@ -22,7 +22,7 @@ public class TaxiCompany {
     // they are to pick up.
     private Map<Vehicle, Passenger> assignments;
 
-    private static final int NUMBER_OF_TAXIS = 3;
+    private static final int NUMBER_OF_TAXIS = 4;
 
     /**
      * @param city The city.
@@ -74,6 +74,9 @@ public class TaxiCompany {
      */
     public void arrivedAtDestination(Vehicle vehicle,
                                      Passenger passenger) {
+    }
+    public static int getNumberOfTaxis() {
+        return NUMBER_OF_TAXIS;
     }
 
     /**
