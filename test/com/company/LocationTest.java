@@ -12,4 +12,5 @@ class LocationTest {
             Location l = new Location(-1, -2);
         });
     }
+
 }
